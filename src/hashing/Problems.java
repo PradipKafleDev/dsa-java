@@ -30,6 +30,7 @@ public class Problems {
     }
 
     static boolean zeroSumSubarray(int a[]){
+        //cumSum means cumulutative sum
         Set<Integer>set = new HashSet<>();
         int cumSum = 0;
         set.add(0);
