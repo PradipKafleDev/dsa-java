@@ -13,18 +13,18 @@ public class FindPathInMatrix {
         if (row == 1 || col == 1) return 1;
 
         //finding the number of possible paths from right side in matrix;
-        int rightSideCount = countPathInMatrix(row, col-1);
+        int rightSideCount = countPathInMatrix(row, col - 1);
         //finding the number of possible paths from downside in matrix;
-        int downSideCount = countPathInMatrix(row-1, col);
+        int downSideCount = countPathInMatrix(row - 1, col);
 
-        return rightSideCount+ downSideCount;
+        return rightSideCount + downSideCount;
 
 
     }
 
     public static void main(String[] args) {
 
-        System.out.println(countPathInMatrix(3,4));
+        System.out.println(countPathInMatrix(3, 4));
 
     }
 }
