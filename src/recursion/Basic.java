@@ -1,7 +1,7 @@
 package recursion;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Basic {
 
@@ -28,20 +28,23 @@ public class Basic {
 
     }
 
-    static void generateSubsets(String s) {
-        utilSubsets(s, 0, " ");
+    static Set<String> generateSubsets(String s) {
+        Set<String> set = new HashSet<>();
+        return utilSubsets(s, 0, " ", set);
 
     }
 
-    static void utilSubsets(String s, int i, String curr) {
+    static Set<String> utilSubsets(String s, int i, String curr, Set<String> set) {
 
         if (i == s.length()) {
-            System.out.println(curr);
-            return;
+            set.add(curr);
+        } else {
+            utilSubsets(s, i + 1, curr, set);
+            utilSubsets(s, i + 1, curr + s.charAt(i), set);
+
         }
 
-        utilSubsets(s, i + 1, curr);
-        utilSubsets(s, i + 1, curr + s.charAt(i));
+        return set;
 
     }
 
@@ -49,7 +52,8 @@ public class Basic {
     public static void main(String[] args) {
 //       int ans =  printSumNaturalNumber(5);
 //       int ans = powerOfNumber(2,5);
-       generateSubsets("abc");
+        Set<String> ans = generateSubsets("abc");
+        System.out.println(ans);
 
 
     }
