@@ -56,11 +56,11 @@ public class PrimeNumber {
         return result;
     }
     public static void main(String[] args) {
-//        boolean result = isPrime(3);
+//        boolean result = isPrime(99);
 //        ArrayList<Integer> ans = rangePrime(40);
 //        System.out.println(ans);
 //        System.out.println(result);
-         System.out.println(sieveOfEratosthenes(37));
+         System.out.println(sieveOfEratosthenes(39));
 
 
     }
