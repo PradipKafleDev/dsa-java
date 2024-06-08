@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class Basic {
 
-
     static int sumOfDigits(int n) {
 
         if (n == 0) return 0;
@@ -15,26 +14,21 @@ public class Basic {
     }
 
     static int printSumNaturalNumber(int n) {
-
         if (n == 0) return 0;
         return printSumNaturalNumber(n - 1) + n;
-
     }
 
     static int powerOfNumber(int base, int exponent) {
         if (exponent == 0) return 1;
-
         return base * powerOfNumber(base, exponent - 1);
-
     }
 
     static Set<String> generateSubsets(String s) {
         Set<String> set = new HashSet<>();
         return utilSubsets(s, 0, " ", set);
-
     }
 
-    static Set<String> utilSubsets(String s, int i, String curr, Set<String> set) {
+    static Set<String> utilSubsets(String s, int i, String curr, Set<String>set) {
 
         if (i == s.length()) {
             set.add(curr);
