@@ -2,6 +2,11 @@ package BinaryTree;
 
 import Node.Node;
 
+import java.lang.reflect.Array;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinaryTree {
     /*
   Tree:
@@ -37,7 +42,6 @@ public class BinaryTree {
         postOrder(root.getRight());
         System.out.print(root.getData() + " --> ");
     }
-
     static int minimumInATree(Node root) {
         if (root == null) return Integer.MAX_VALUE;
         int left = minimumInATree(root.getLeft());
@@ -91,6 +95,50 @@ public class BinaryTree {
         return onSameLevel && differentParent;
     }
 
+    static void printAllNodesAtALevelKRecursive(Node root, int level, ArrayList<Integer> ans) {
+        if (root == null || level < 0) return;
+
+        if (level == 0) {
+            ans.add(root.getData());
+        }
+
+        printAllNodesAtALevelKRecursive(root.getLeft(), level - 1, ans);
+        printAllNodesAtALevelKRecursive(root.getRight(), level - 1, ans);
+    }
+
+    static class Pair {
+        Node node;
+        int level;
+
+        public Pair(Node node, int level) {
+            this.node = node;
+            this.level = level;
+        }
+    }
+
+    static List<Integer> printAllNodesAtALevelKIterative(Node root, int level) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        ArrayDeque<Pair> stack = new ArrayDeque<>();
+
+        Pair first = new Pair(root, level);
+        stack.push(first);
+
+        while (!stack.isEmpty()) {
+            Pair curr = stack.poll();
+            if(curr.node == null) continue;
+            if (curr.level == 0) {
+                ans.add(curr.node.getData());
+                continue;
+            }
+
+            stack.push(new Pair(curr.node.getRight(), curr.level - 1));
+            stack.push(new Pair(curr.node.getLeft(), curr.level - 1));
+
+        }
+
+        return ans;
+    }
+
 
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -98,18 +146,23 @@ public class BinaryTree {
         Node n2 = new Node(3);
         Node n3 = new Node(4);
         Node n4 = new Node(5);
-
+        Node n5 = new Node(8);
         root.setLeft(n1);
         root.setRight(n2);
-        n1.setRight(n3);
-        n2.setRight(n4);
+        n1.setLeft(n3);
+        n1.setRight(n4);
+        n2.setLeft(n5);
 
 //        inorder(root);
 //        preOrder(root);
 //        postOrder(root);
 //        System.out.println(minimumInATree(root));
 //        System.out.println(heightOfABinaryTree(root));
-        System.out.println(checkAreCousins(root, n3.getData(), n4.getData()));
+//        System.out.println(checkAreCousins(root, n3.getData(), n4.getData()));]
+//        ArrayList<Integer> ans = new ArrayList<>();
+//        printAllNodesAtALevelK(root, 1, ans);
+//        System.out.println(ans);
+        System.out.println(printAllNodesAtALevelKIterative(root, 2));
 
     }
 }
