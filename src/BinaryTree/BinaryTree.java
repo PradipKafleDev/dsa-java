@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class BinaryTree {
     /*
@@ -42,6 +43,7 @@ public class BinaryTree {
         postOrder(root.getRight());
         System.out.print(root.getData() + " --> ");
     }
+
     static int minimumInATree(Node root) {
         if (root == null) return Integer.MAX_VALUE;
         int left = minimumInATree(root.getLeft());
@@ -125,7 +127,7 @@ public class BinaryTree {
 
         while (!stack.isEmpty()) {
             Pair curr = stack.poll();
-            if(curr.node == null) continue;
+            if (curr.node == null) continue;
             if (curr.level == 0) {
                 ans.add(curr.node.getData());
                 continue;
@@ -139,6 +141,26 @@ public class BinaryTree {
         return ans;
     }
 
+    static ArrayList<Integer> inOrder(Node root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        Stack<Node> stack = new Stack<Node>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            Node temp = stack.pop();
+
+            if (temp.getRight() != null) {
+                stack.push(temp.getRight());
+            }
+
+            if (temp.getLeft() != null) {
+                stack.push(temp.getLeft());
+            }
+        }
+        System.out.println(stack);
+        return res;
+    }
+
 
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -146,12 +168,14 @@ public class BinaryTree {
         Node n2 = new Node(3);
         Node n3 = new Node(4);
         Node n4 = new Node(5);
-        Node n5 = new Node(8);
+        Node n5 = new Node(6);
+        Node n6 = new Node(7);
         root.setLeft(n1);
         root.setRight(n2);
         n1.setLeft(n3);
         n1.setRight(n4);
         n2.setLeft(n5);
+        n2.setRight(n6);
 
 //        inorder(root);
 //        preOrder(root);
@@ -162,7 +186,7 @@ public class BinaryTree {
 //        ArrayList<Integer> ans = new ArrayList<>();
 //        printAllNodesAtALevelK(root, 1, ans);
 //        System.out.println(ans);
-        System.out.println(printAllNodesAtALevelKIterative(root, 2));
-
+//        System.out.println(printAllNodesAtALevelKIterative(root, 2));
+        System.out.println(inOrder(root));
     }
 }
