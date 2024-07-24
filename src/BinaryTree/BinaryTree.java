@@ -3,10 +3,7 @@ package BinaryTree;
 import Node.Node;
 
 import java.lang.reflect.Array;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTree {
     /*
@@ -161,6 +158,31 @@ public class BinaryTree {
         return res;
     }
 
+    static void printRightViewOfABinaryTree(Node root, int level, ArrayList<Integer> res) {
+        if (root == null) return;
+        if (level >= res.size()) {
+            res.add(root.getData());
+        }
+        printRightViewOfABinaryTree(root.getRight(), level + 1, res);
+        printRightViewOfABinaryTree(root.getLeft(), level + 1, res);
+    }
+
+    static void printLevelOrderTraversal(Node root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            Node curr = queue.poll();
+            res.add(curr.getData());
+            if (curr.getLeft() != null) {
+                queue.add(curr.getLeft());
+            }
+            if (curr.getRight() != null) {
+                queue.add(curr.getRight());
+            }
+        }
+        System.out.println(res);
+    }
 
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -187,6 +209,11 @@ public class BinaryTree {
 //        printAllNodesAtALevelK(root, 1, ans);
 //        System.out.println(ans);
 //        System.out.println(printAllNodesAtALevelKIterative(root, 2));
-        System.out.println(inOrder(root));
+//        System.out.println(inOrder(root));a
+//        ArrayList<Integer> res = new ArrayList<>();
+//        printRightViewOfABinaryTree(root, 0, res);
+//        System.out.println(res);
+
+        printLevelOrderTraversal(root);
     }
 }
