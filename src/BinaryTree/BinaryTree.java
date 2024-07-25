@@ -184,6 +184,67 @@ public class BinaryTree {
         System.out.println(res);
     }
 
+
+    static class Pair1 {
+        //horizontal distance
+        int hd;
+        Node node;
+
+        public Pair1(int hd, Node node) {
+            this.hd = hd;
+            this.node = node;
+        }
+    }
+
+    static ArrayList<ArrayList<Integer>> verticalOrderTraversal(Node root) {
+        Queue<Pair1> q = new LinkedList<>();
+        TreeMap<Integer, ArrayList<Integer>> map = new TreeMap<>();
+        q.add(new Pair1(0, root));
+        while (!q.isEmpty()) {
+            Pair1 curr = q.poll();
+            if (!map.containsKey(curr.hd)) {
+                map.putIfAbsent(curr.hd, new ArrayList<>());
+            }
+            map.get(curr.hd).add(curr.node.getData());
+            if (curr.node.getLeft() != null) {
+                q.add(new Pair1(curr.hd - 1, curr.node.getLeft()));
+            }
+            if (curr.node.getRight() != null) {
+                q.add(new Pair1(curr.hd + 1, curr.node.getRight()));
+            }
+        }
+        return new ArrayList<>(map.values());
+    }
+
+    static ArrayList<Integer> printTopViewOfABinaryTree(Node root) {
+        Queue<Pair1> q = new LinkedList<>();
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        q.add(new Pair1(0, root));
+        while (!q.isEmpty()) {
+            Pair1 curr = q.poll();
+            if (!map.containsKey(curr.hd)) {
+                map.put(curr.hd, curr.node.getData());
+            }
+            if (curr.node.getLeft() != null) {
+                q.add(new Pair1(curr.hd - 1, curr.node.getLeft()));
+            }
+            if (curr.node.getRight() != null) {
+                q.add(new Pair1(curr.hd + 1, curr.node.getRight()));
+            }
+        }
+        return new ArrayList<>(map.values());
+    }
+
+    static int DIAMETER = 0;
+    static int diameterOfABinaryTreeHelper(Node root) {
+        if (root == null) return 0;
+        int leftHeight = diameterOfABinaryTreeHelper(root.getLeft());
+        int rightHeight = diameterOfABinaryTreeHelper(root.getRight());
+        DIAMETER = Math.max(DIAMETER, leftHeight + rightHeight);
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+
     public static void main(String[] args) {
         Node root = new Node(1);
         Node n1 = new Node(2);
@@ -198,6 +259,14 @@ public class BinaryTree {
         n1.setRight(n4);
         n2.setLeft(n5);
         n2.setRight(n6);
+
+        /*
+              1
+          2       3
+        4   5   6   7
+
+         */
+
 
 //        inorder(root);
 //        preOrder(root);
@@ -214,6 +283,9 @@ public class BinaryTree {
 //        printRightViewOfABinaryTree(root, 0, res);
 //        System.out.println(res);
 
-        printLevelOrderTraversal(root);
+//        printLevelOrderTraversal(root);
+//        System.out.println(printTopViewOfABinaryTree(root));
+        diameterOfABinaryTreeHelper(root);
+        System.out.println(DIAMETER);
     }
 }
