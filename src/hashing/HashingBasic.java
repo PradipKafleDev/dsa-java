@@ -15,7 +15,6 @@ public class HashingBasic {
 //        System.out.println(map);
 
 
-
         //HashSet
 //        HashSet<Integer> set = new HashSet<>();
 //        set.add(34);
@@ -38,49 +37,44 @@ public class HashingBasic {
 //        rollCall.add(s4);
 //        System.out.println(rollCall);
 
-        Set <Student>rollCall = new HashSet<>();
-        Student s1 = new Student(1,"pradip");
-        Student s2 = new Student(1,"Aman");
+        Set<Student> rollCall = new HashSet<>();
+        Student s1 = new Student(1, "pradip");
+        Student s2 = new Student(1, "Aman");
         System.out.println(s1.hashCode());
         System.out.println(s1.hashCode());
 
         System.out.println(s1.equals(s2));
 
 
-
-
-
-
     }
-
 
 
 }
 
-class Student{
+class Student {
     int rollNo;
     String name;
 
-    public Student(int rollNo, String name){
+    public Student(int rollNo, String name) {
         this.rollNo = rollNo;
         this.name = name;
     }
 
-    public String toString(){
-        return "("+rollNo+" , "+name+")";
+    public String toString() {
+        return "(" + rollNo + " , " + name + ")";
     }
 
-//    @Override
+    //    @Override
 //    public int hashCode(){
 //        return rollNo;
 //    }
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         Student that = (Student) obj;
-        if(this.rollNo == that.rollNo){
+        if (this.rollNo == that.rollNo) {
             return true;
         }
         return false;
     }
 
-    }
+}
