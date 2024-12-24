@@ -4,7 +4,7 @@ package array;
 /**
  * Question: You are given an array of N integers, A1, A2, ... AN. Return maximum value of f(i, j) for all 1 >= j, J<= N.
  * f(i, j) = | A[i] - A[j] | + [i-j], where |x| denotes absolute value of x.
- *
+ * <p>
  * Note:
  * aipi -> a[i] plus i;
  * aimi -> a[i] minus i;
