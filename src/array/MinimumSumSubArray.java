@@ -26,9 +26,17 @@ public class MinimumSumSubArray {
 
         while (r < n) {
             currentSum += arr[r];
+                // firstly we will increase the r and move that r to the point when currentSum > == target
             while (currentSum >= target) {
-                int length = r - l + 1;
-                minLength = Math.min(minLength, length);
+                // At this point we found the currSum > = target ( 1, 2, 5 ) = 8
+                // we will update the length if the currLength is mim then minLength
+                // with to the previous minLength
+                // Now, we will minimize the window size, so we will update curr sum and left window
+                // currSum = currSum = a[l] --> 8 - 1 , currSum= 7
+                // left = 0 + 1 --> l = 1 and so on....
+
+                int currentLength = r - l + 1;
+                minLength = Math.min(minLength, currentLength);
                 currentSum -= arr[l];
                 l++;
             }
