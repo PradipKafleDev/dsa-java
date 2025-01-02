@@ -1,11 +1,18 @@
 package util;
 
 public final class Util {
+
     public static void printArray(int[] arr) {
-        for (int i : arr) {
-            System.out.print(i);
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
         }
+        System.out.println("]");
     }
+
 
     public static <T> Pairs createPair(T a, T b) {
         return new Pairs(a, b);
