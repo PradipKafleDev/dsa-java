@@ -10,12 +10,9 @@ public class RemoveDuplicate {
                 j++;
 
             }
-
-
         }
+
         return a;
-
-
     }
 
     public static void main(String[] args) {
