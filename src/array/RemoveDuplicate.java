@@ -8,14 +8,10 @@ public class RemoveDuplicate {
             if (a[i] != a[j]) {
                 a[j + 1] = a[i];
                 j++;
-
             }
-
-
         }
+
         return a;
-
-
     }
 
     public static void main(String[] args) {
