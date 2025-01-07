@@ -1,8 +1,6 @@
 package array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 /*
  * Given an integer array nums, return all the triplets such that nums[i] + nums[j] + nums[k] = 0 for
  * distinct i, j, k
