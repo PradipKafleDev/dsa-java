@@ -1,42 +1,59 @@
 package stack;
 
-public class StackUsingArray {
+public class StackUsingArray implements CustomStackInterface {
 
-    int a[];
-    int capacity;
-    int top;
-    public StackUsingArray(int capacity){
-        this.capacity=capacity;
-        a= new int[capacity];
-        top=-1;
+    private final int[] arr;
+    private final int capacity;
+    private int idx;
 
+    public StackUsingArray(int capacity) {
+        this.capacity = capacity;
+        arr = new int[capacity];
+        idx = -1;
     }
-    boolean push(int element){
-        if(top==capacity-1) return false;
-        top++;
-        a[top]=element;
-        return true;
 
+    @Override
+    public int push(int element) throws StackOverflowError {
+        if (idx == capacity - 1) throw new StackOverflowError("Stack size exceeds");
+        idx++;
+        arr[idx] = element;
+        return arr.length;
     }
-    int pop() throws Exception {
-        if(top== -1) throw  new Exception("Stack is Empty");
-        int ans = a[top];
-        top--;
+
+    @Override
+    public int pop() throws Exception {
+        if (idx == -1) throw new Exception("Stack is Empty");
+        int ans = arr[idx];
+        idx--;
         return ans;
-
     }
 
-    int peak() throws Exception {
-        if(top==1) throw new Exception("Stack is Empty");
-        return a[top];
-
+    @Override
+    public int peak() throws Exception {
+        if (idx == 1) throw new Exception("Stack is Empty");
+        return arr[idx];
     }
 
-    boolean isEmpty(){
-        return top==-1;
+    @Override
+    public boolean isEmpty() {
+        return idx == -1;
     }
 
-    int size(){
-        return top+1;
+    @Override
+    public int size() {
+        return idx + 1;
     }
+
+    @Override
+    public boolean isFull() {
+        return !isEmpty();
+    }
+
+    @Override
+    public void printStack() {
+        for (int i = 0; i <= idx; i++) {
+            System.out.println(arr[idx]);
+        }
+    }
+
 }
