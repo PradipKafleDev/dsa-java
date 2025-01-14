@@ -1,49 +1,39 @@
 package stack;
 
-public class StackUsingLinkedList {
-    //Here head is null
-    Node head;
-    int size =0;
-    class Node{
-        int data;
-        Node next;
+import util.Util;
 
-        public Node(int data){
-            this.data =data;
+public class StackUsingLinkedList {
+
+    private Util.StackNode head;
+
+    boolean isEmpty() {
+        return head == null;
+    }
+
+    void push(int data) {
+        Util.StackNode newNode = new Util.StackNode(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack is Empty");
+            return -1;
+        } else {
+            int temp = head.data;
+            head = head.next;
+            return temp;
         }
     }
 
-
-    ///insertion happen at head where we push the element
-    void push(int element){
-        Node newNode = new Node(element);
-        newNode.next = head;
-        head=newNode;
-        size++ ;
-
-    }
-
-
-    // deletion at head is a stack pop
-    int pop() throws Exception {
-        if(isEmpty()) throw new Exception("Stack is Empty");
-        int ans = head.data;
-        head = head.next;
-        size --;
-        return ans;
-
-    }
-    int peek() throws Exception {
-        if(isEmpty()) throw new Exception("Stack is Empty");
-        return head.data;
-
-    }
-    int size(){
-        return size;
-
-    }
-    boolean isEmpty(){
-        return size==0;
+    int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is Empty");
+            return -1;
+        } else {
+            return head.data;
+        }
     }
 
 }
