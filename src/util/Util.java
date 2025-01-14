@@ -13,7 +13,6 @@ public final class Util {
         System.out.println("]");
     }
 
-
     public static <T> Pairs createPair(T a, T b) {
         return new Pairs(a, b);
     }
@@ -27,6 +26,16 @@ public final class Util {
             this.b = b;
         }
     }
+
+    public static class StackNode {
+        public int data;
+        public StackNode next;
+
+        public StackNode(int data) {
+            this.data = data;
+        }
+    }
+
 }
 
 
