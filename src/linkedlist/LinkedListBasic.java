@@ -53,16 +53,16 @@ public class LinkedListBasic {
 
     }
 
-    static int findMiddleLinkedlIst(Node head) {
+    static Node findMiddleLinkedlIst(Node head) {
         Node slow = head;
         Node fast = head;
 
-        while (fast != null & fast.next != null) {
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
 
         }
-        return slow.data;
+        return slow;
     }
 
     public static void main(String[] args) {
