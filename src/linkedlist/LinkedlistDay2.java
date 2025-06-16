@@ -24,21 +24,12 @@ public class LinkedlistDay2 {
         Node newHead = reverseRecursiveLinkedList(head.next);
         temp.next = head;
         head.next = null;
+
         return newHead;
-
-    }
-
-    static void printLinkedList(Node head) {
-        Node curr = head;
-        while (curr != null) {
-            System.out.print(curr.data + " ");
-            curr = curr.next;
-        }
-        System.out.println();
     }
 
     static boolean isLLPalindrome(Node head) {
-        Node middle = LinkedListBasic.findMiddleLinkedlIst(head);
+        Node middle = LinkedListBasic.findMiddleLinkedlist(head);
         Node t2 = reverseLinkedList(middle);
         Node t1 = head;
 
@@ -49,6 +40,7 @@ public class LinkedlistDay2 {
             t1 = t1.next;
             t2 = t2.next;
         }
+
         return true;
     }
 
@@ -58,7 +50,6 @@ public class LinkedlistDay2 {
 //        head.next.next = new Node(30);
 //        head.next.next.next = new Node(30);
 //        head.next.next.next.next = new Node(10);
-
         System.out.println(isLLPalindrome(head));
 //        printLinkedList(head);
 //        Node newHead = reverseLinkedList(head);
@@ -66,6 +57,7 @@ public class LinkedlistDay2 {
 //        printLinkedList(newHead);
 
     }
+
 }
 
 class Node {

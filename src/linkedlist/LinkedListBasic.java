@@ -1,7 +1,7 @@
 package linkedlist;
 
 /*
-Linked list are not stored in contigious location
+Linked list are not stored in contiguous location
  */
 
 public class LinkedListBasic {
@@ -33,10 +33,9 @@ public class LinkedListBasic {
         curr.next = newNode;
 
         return head;
-
     }
 
-    static Node deletInLinkedList(int position, Node head) {
+    static Node deleteInLinkedList(int position, Node head) {
         if (head == null) return null;
 
         if (position == 0) {
@@ -48,12 +47,11 @@ public class LinkedListBasic {
             curr = curr.next;
         }
         curr.next = curr.next.next;
+
         return head;
-
-
     }
 
-    static Node findMiddleLinkedlIst(Node head) {
+    static Node findMiddleLinkedlist(Node head) {
         Node slow = head;
         Node fast = head;
 
@@ -62,6 +60,7 @@ public class LinkedListBasic {
             fast = fast.next.next;
 
         }
+
         return slow;
     }
 
@@ -73,7 +72,6 @@ public class LinkedListBasic {
         Node n5 = new Node(50);
         Node n6 = new Node(60);
         Node n7 = new Node(70);
-
 
         Node head = n1;
         n1.next = n2;
@@ -87,6 +85,7 @@ public class LinkedListBasic {
 //      head =insertInLinkedList(100,3,head);
 //        head=deletInLinkedList(3,head);
 //        traverseInLinkedList(head);
-        System.out.println(findMiddleLinkedlIst(head));
+        System.out.println(findMiddleLinkedlist(head));
     }
+
 }
