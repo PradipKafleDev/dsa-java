@@ -1,9 +1,10 @@
-package Node;
+package template;
 
 public class Node {
-    int data;
-    Node right;
-    Node left;
+    public int data;
+    public Node right;
+    public Node left;
+   public Node next;
 
     public Node(int data) {
         this.data = data;
@@ -32,6 +33,4 @@ public class Node {
     public void setLeft(Node left) {
         this.left = left;
     }
-
-
 }

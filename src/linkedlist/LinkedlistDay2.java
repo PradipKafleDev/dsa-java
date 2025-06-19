@@ -1,5 +1,7 @@
 package linkedlist;
 
+import template.Node;
+
 public class LinkedlistDay2 {
 
     static Node reverseLinkedList(Node head) {
@@ -28,7 +30,7 @@ public class LinkedlistDay2 {
         return newHead;
     }
 
-    static boolean isLLPalindrome(Node head) {
+    static boolean isLinkedListPalindrome(Node head) {
         Node middle = LinkedListBasic.findMiddleLinkedlist(head);
         Node t2 = reverseLinkedList(middle);
         Node t1 = head;
@@ -44,13 +46,52 @@ public class LinkedlistDay2 {
         return true;
     }
 
+    static Node mergedTwoSortedLinkedList(Node head1, Node head2) {
+        Node head = null, tail = null;
+
+        Node a = head1;
+        Node b = head2;
+
+        if (a == null) return b;
+        if (b == null) return a;
+
+        if (a.data <= b.data) {
+            head = a;
+            tail = a;
+            a = a.next;
+        } else {
+            head = b;
+            tail = b;
+            b = b.next;
+
+        }
+
+        while (a != null && b != null) {
+            if (a.data <= b.data) {
+                tail.next = a;
+                tail = a;
+                a = a.next;
+            } else {
+                tail.next = b;
+                tail = b;
+                b = b.next;
+            }
+
+        }
+
+        if (a == null) tail.next = b;
+        if (b == null) tail.next = a;
+
+        return head;
+    }
+
     public static void main(String[] args) {
         Node head = new Node(10);
         head.next = new Node(20);
 //        head.next.next = new Node(30);
 //        head.next.next.next = new Node(30);
 //        head.next.next.next.next = new Node(10);
-        System.out.println(isLLPalindrome(head));
+        System.out.println(isLinkedListPalindrome(head));
 //        printLinkedList(head);
 //        Node newHead = reverseLinkedList(head);
 //        Node newHead = reverseRecursiveLinkedList(head);
@@ -58,13 +99,4 @@ public class LinkedlistDay2 {
 
     }
 
-}
-
-class Node {
-    int data;
-    Node next;
-
-    public Node(int data) {
-        this.data = data;
-    }
 }

@@ -1,6 +1,6 @@
 package binaryTree;
 
-import Node.Node;
+import template.Node;
 
 import java.util.*;
 

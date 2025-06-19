@@ -4,9 +4,11 @@ package linkedlist;
 Linked list are not stored in contiguous location
  */
 
+import template.Node;
+
 public class LinkedListBasic {
 
-    static void traverseInLinkedList(Node head) {
+    static void printLinkedList(Node head) {
         Node cur = head;
         while (cur != null) {
             System.out.print(cur.data + "-->");
@@ -35,7 +37,7 @@ public class LinkedListBasic {
         return head;
     }
 
-    static Node deleteInLinkedList(int position, Node head) {
+    static Node deleteLinkedList(int position, Node head) {
         if (head == null) return null;
 
         if (position == 0) {
@@ -81,10 +83,9 @@ public class LinkedListBasic {
         n5.next = n6;
         n6.next = n7;
 
-        traverseInLinkedList(head);
+        printLinkedList(head);
 //      head =insertInLinkedList(100,3,head);
-//        head=deletInLinkedList(3,head);
-//        traverseInLinkedList(head);
+//      head=deleteLinkedList(3,head);
         System.out.println(findMiddleLinkedlist(head));
     }
 
