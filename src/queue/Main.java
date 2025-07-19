@@ -19,18 +19,50 @@ public class Main {
 //
 //        q.printQueue(); // 30 40
 
+        //Circular Queue
+//        CircularQueue cq = new CircularQueue(4);
+//        cq.enqueue(10);
+//        cq.enqueue(20);
+//        cq.enqueue(30);
+//        cq.enqueue(40);
+//        cq.enqueue(50);
+//
+//        cq.printQueue();
+//        System.out.println(cq.peek());
+//        System.out.println(cq.dequeue());
+//        System.out.println(cq.dequeue());
 
-        CircularQueue cq = new CircularQueue(4);
-        cq.enqueue(10);
-        cq.enqueue(20);
-        cq.enqueue(30);
-        cq.enqueue(40);
-        cq.enqueue(50);
+        // Queue using two stack
+//        QueueUsingTwoStacks qTwoStacks = new QueueUsingTwoStacks();
+//        qTwoStacks.enqueue(10);
+//        qTwoStacks.enqueue(20);
+//        qTwoStacks.enqueue(30);
+//
+//        System.out.println(qTwoStacks.dequeue()); //10
+//        System.out.println(qTwoStacks.dequeue()); //20
+//        System.out.println(qTwoStacks.dequeue());//30
+//
+//        qTwoStacks.enqueue(40);
+//        qTwoStacks.enqueue(50);
+//        qTwoStacks.enqueue(60);
+//
+//        System.out.println(qTwoStacks.dequeue()); //40
+//        System.out.println(qTwoStacks.dequeue()); //50
+//        System.out.println(qTwoStacks.dequeue()); //60
 
-        cq.printQueue();
-        System.out.println(cq.peek());
-        System.out.println(cq.dequeue());
-        System.out.println(cq.dequeue());
+        //Queue using one stack
+        QueueUsingOneStack qUsingOnStack = new QueueUsingOneStack();
+        qUsingOnStack.enqueue(10);
+        qUsingOnStack.enqueue(20);
+        qUsingOnStack.enqueue(30);
+
+        System.out.println(qUsingOnStack.dequeue()); //10
+        System.out.println(qUsingOnStack.dequeue()); //20
+        System.out.println(qUsingOnStack.dequeue()); //30
+
+        qUsingOnStack.enqueue(40);
+
+        System.out.println(qUsingOnStack.dequeue()); //40
     }
 
 }
