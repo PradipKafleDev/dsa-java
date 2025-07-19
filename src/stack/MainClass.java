@@ -14,19 +14,29 @@ public class MainClass {
 //
 //        stack.printStack(); //2 as we pull out 8,1,4 : LIFO
 
-        StackUsingLinkedList stackUsingLinkedList = new StackUsingLinkedList();
-        stackUsingLinkedList.push(2);
-        stackUsingLinkedList.push(4);
-        stackUsingLinkedList.push(1);
-        stackUsingLinkedList.push(8);
+//        StackUsingLinkedList stackUsingLinkedList = new StackUsingLinkedList();
+//        stackUsingLinkedList.push(2);
+//        stackUsingLinkedList.push(4);
+//        stackUsingLinkedList.push(1);
+//        stackUsingLinkedList.push(8);
+//
+//        while (!stackUsingLinkedList.isEmpty()){
+//            System.out.print(stackUsingLinkedList.pop() + " ");
+//        }
+//        System.out.println();
+//        stackUsingLinkedList.push(8);
+//
+//        System.out.println(stackUsingLinkedList.peek());
 
-        while (!stackUsingLinkedList.isEmpty()){
-            System.out.print(stackUsingLinkedList.pop() + " ");
-        }
-        System.out.println();
-        stackUsingLinkedList.push(8);
 
-        System.out.println(stackUsingLinkedList.peek());
+        StackUsingOneQueue stackq = new StackUsingOneQueue();
+        stackq.push(10);
+        stackq.push(20);
+        stackq.push(30);
+
+        System.out.println(stackq.pop());
+        System.out.println(stackq.pop());
+        System.out.println(stackq.pop());
     }
 
 }
