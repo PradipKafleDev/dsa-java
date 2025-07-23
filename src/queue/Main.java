@@ -1,7 +1,7 @@
 package queue;
 
 public class Main {
-    public static void main (String args[]){
+    public static void main(String args[]) {
 
         // Normal Queue
 //        QueueBasic q = new QueueBasic(4);
@@ -51,18 +51,29 @@ public class Main {
 //        System.out.println(qTwoStacks.dequeue()); //60
 
         //Queue using one stack
-        QueueUsingOneStack qUsingOnStack = new QueueUsingOneStack();
-        qUsingOnStack.enqueue(10);
-        qUsingOnStack.enqueue(20);
-        qUsingOnStack.enqueue(30);
+//        QueueUsingOneStack qUsingOnStack = new QueueUsingOneStack();
+//        qUsingOnStack.enqueue(10);
+//        qUsingOnStack.enqueue(20);
+//        qUsingOnStack.enqueue(30);
+//
+//        System.out.println(qUsingOnStack.dequeue()); //10
+//        System.out.println(qUsingOnStack.dequeue()); //20
+//        System.out.println(qUsingOnStack.dequeue()); //30
+//
+//        qUsingOnStack.enqueue(40);
+//
+//        System.out.println(qUsingOnStack.dequeue()); //40
 
-        System.out.println(qUsingOnStack.dequeue()); //10
-        System.out.println(qUsingOnStack.dequeue()); //20
-        System.out.println(qUsingOnStack.dequeue()); //30
+        // Queue getMin impl
+        QueueWithGetMin q = new QueueWithGetMin();
+        q.enqueue(5);
+        q.enqueue(3);
 
-        qUsingOnStack.enqueue(40);
-
-        System.out.println(qUsingOnStack.dequeue()); //40
+        System.out.println(q.getMin()); //3
+        q.dequeue();
+        q.enqueue(4);
+        q.enqueue(2);
+        System.out.println(q.getMin()); //2
     }
 
 }
